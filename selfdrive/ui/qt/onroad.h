@@ -272,15 +272,15 @@ private:
   inline QColor greenColor(int alpha = 242) { return QColor(23, 134, 68, alpha); }
 
 protected:
-  //QPixmap ic_regenPaddle;
-  //void drawBrakeRegen(QPainter &p);
-
   // NDA neokii
   QPixmap ic_nda;
   QPixmap ic_hda;
   QPixmap ic_nda2;
   QPixmap ic_hda2;
   void drawRoadLimitSpeed(QPainter &p);
+
+  QPixmap ic_regenPaddle;
+  void drawBrakeRegen(QPainter &p);
 
   void paintGL() override;
   void initializeGL() override;

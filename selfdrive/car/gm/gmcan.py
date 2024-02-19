@@ -222,3 +222,9 @@ def create_gm_cc_spam_command(packer, controller, CS, actuators):
     return [create_buttons(packer, CanBus.POWERTRAIN, idx, cruiseBtn)]
   else:
     return []
+
+def create_regen_paddle_command(packer, bus):
+  values = {
+    "RegenPaddle": 0x2,
+  }
+  return packer.make_can_msg("EBCMRegenPaddle", bus, values)
