@@ -2142,9 +2142,9 @@ void AnnotatedCameraWidget::drawBrakeRegen(QPainter &p){
   const auto car_control = sm["carControl"].getCarControl();
 
   int offset = UI_BORDER_SIZE + btn_size / 2 ;  //UI_BORDER_SIZE = 30, btn_size = 192
-  offset += alwaysOnLateral || conditionalExperimental || roadNameUI ? 25 : 0;
+  offset += showAlwaysOnLateralStatusBar || showConditionalExperimentalStatusBar || roadNameUI ? 25 : 0;
   int x = rightHandDM ? width() - offset : offset;
-  x += onroadAdjustableProfiles ? 250 : 0;
+  x += onroadDistanceButton ? 250 : 0;
   x += (btn_size+25);
   int y = height() - offset;
 
