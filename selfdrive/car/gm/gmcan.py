@@ -229,7 +229,7 @@ def create_gm_cc_spam_command(packer, controller, CS, actuators):
 #   }
 #   return packer.make_can_msg("EBCMRegenPaddle", bus, values)
 
-def create_regen_paddle_command_test1(bus):
+def create_regen_paddle_command(bus):
   dat = b"\x02"
 
   # 미리 계산된 CRC 값 (0xEEDF)
@@ -237,4 +237,6 @@ def create_regen_paddle_command_test1(bus):
   dat_with_checksum = dat + bytes(checksum_bytes)
 
   return packer.make_can_msg(0x189, dat_with_checksum, bus)
+
+
 
