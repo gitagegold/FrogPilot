@@ -1213,4 +1213,11 @@ This may take up to a minute.</source>
         <translation>삭제</translation>
     </message>
 </context>
+<context>
+    <name>FrogPilotControlsPanel</name>
+    <message>
+        <source>Always on Lateral</source>
+        <translation>상시 핸들 조향</translation>
+    </message>
+</context>
 </TS>
