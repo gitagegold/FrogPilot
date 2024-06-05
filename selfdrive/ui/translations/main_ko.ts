@@ -1230,7 +1230,7 @@ This may take up to a minute.</source>
 <context>
     <name>FrogPilotVisualsPanel</name>
     <message>
-        <source>"Alert Volume Controller"</source>
+        <source>Alert Volume Controller</source>
         <translation>볼륨 크기 조절</translation>
     </message>
 </context>
