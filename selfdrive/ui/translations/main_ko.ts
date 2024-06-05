@@ -1220,4 +1220,11 @@ This may take up to a minute.</source>
         <translation>상시 핸들 조향</translation>
     </message>
 </context>
+<context>
+    <name>DriveStats</name>
+    <message>
+        <source>"ALL TIME</source>
+        <translation>전체 주행</translation>
+    </message>
+</context>
 </TS>
