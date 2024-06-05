@@ -6,7 +6,7 @@ FrogPilotVisualsPanel::FrogPilotVisualsPanel(SettingsWindow *parent) : FrogPilot
 
   const std::vector<std::tuple<QString, QString, QString, QString>> visualToggles {
     {"AlertVolumeControl", tr("경보 볼륨 컨트롤러"), tr("Openpilot에서 각 개별 사운드의 볼륨 레벨을 제어합니다."), "../frogpilot/assets/toggle_icons/icon_mute.png"},
-    {"DisengageVolume", tr("해제 볼륨"), tr("관련 알림:\n\적응형 크루즈 비활성화\주차 브레이크 작동\브레이크 페달 눌림\n속도가 너무 느림"), ""},
+    {"DisengageVolume", tr("해제 볼륨"), tr("관련 알림:\n적응형 크루즈 비활성화\n주차 브레이크 작동\n브레이크 페달 눌림\n속도가 너무 느림"), ""},
     {"EngageVolume", tr("Engage Volume"), tr("Related alerts:\n\nNNFF Torque Controller loaded\nopenpilot engaged"), ""},
     {"PromptVolume", tr("Prompt Volume"), tr("Related alerts:\n\nCar Detected in Blindspot\nSpeed too Low\nSteer Unavailable Below 'X'\nTake Control, Turn Exceeds Steering Limit"), ""},
     {"PromptDistractedVolume", tr("Prompt Distracted Volume"), tr("Related alerts:\n\nPay Attention, Driver Distracted\nTouch Steering Wheel, Driver Unresponsive"), ""},
