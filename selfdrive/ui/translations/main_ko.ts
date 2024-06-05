@@ -1223,8 +1223,15 @@ This may take up to a minute.</source>
 <context>
     <name>DriveStats</name>
     <message>
-        <source>"ALL TIME</source>
+        <source>ALL TIME</source>
         <translation>전체 주행</translation>
+    </message>
+</context>
+<context>
+    <name>FrogPilotVisualsPanel</name>
+    <message>
+        <source>"Alert Volume Controller"</source>
+        <translation>볼륨 크기 조절</translation>
     </message>
 </context>
 </TS>
