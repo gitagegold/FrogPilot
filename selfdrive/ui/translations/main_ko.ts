@@ -1233,5 +1233,9 @@ This may take up to a minute.</source>
         <source>Alert Volume Controller</source>
         <translation>볼륨 크기 조절</translation>
     </message>
+ <message>
+        <source>Control the volume level for each individual sound in openpilot.</source>
+        <translation>Openpilot에서 각 개별 사운드의 볼륨 레벨을 제어합니다.</translation>
+    </message>
 </context>
 </TS>
