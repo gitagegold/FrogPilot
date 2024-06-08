@@ -58,7 +58,7 @@ QStringList getCarNames(const QString &carMake) {
 }
 
 FrogPilotVehiclesPanel::FrogPilotVehiclesPanel(SettingsWindow *parent) : FrogPilotListWidget(parent) {
-  selectMakeButton = new ButtonControl(tr("Select Make"), tr("SELECT"));
+  selectMakeButton = new ButtonControl(tr("자동차 회사 선택"), tr("선택"));
   QObject::connect(selectMakeButton, &ButtonControl::clicked, [this]() {
     QStringList makes = {
       "Acura", "Audi", "BMW", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Dodge", "Ford", "GM", "GMC",
@@ -66,7 +66,7 @@ FrogPilotVehiclesPanel::FrogPilotVehiclesPanel(SettingsWindow *parent) : FrogPil
       "Mercedes", "Nissan", "Ram", "SEAT", "Škoda", "Subaru", "Tesla", "Toyota", "Volkswagen", "Volvo",
     };
 
-    QString newMakeSelection = MultiOptionDialog::getSelection(tr("Select a Make"), makes, "", this);
+    QString newMakeSelection = MultiOptionDialog::getSelection(tr("자동차 회사 선택"), makes, "", this);
     if (!newMakeSelection.isEmpty()) {
       carMake = newMakeSelection;
       params.putNonBlocking("CarMake", carMake.toStdString());
@@ -76,9 +76,9 @@ FrogPilotVehiclesPanel::FrogPilotVehiclesPanel(SettingsWindow *parent) : FrogPil
   });
   addItem(selectMakeButton);
 
-  selectModelButton = new ButtonControl(tr("Select Model"), tr("SELECT"));
+  selectModelButton = new ButtonControl(tr("모델 선택"), tr("선택"));
   QObject::connect(selectModelButton, &ButtonControl::clicked, [this]() {
-    QString newModelSelection = MultiOptionDialog::getSelection(tr("Select a Model"), models, "", this);
+    QString newModelSelection = MultiOptionDialog::getSelection(tr("모델 선택"), models, "", this);
     if (!newModelSelection.isEmpty()) {
       carModel = newModelSelection;
       params.putNonBlocking("CarModel", newModelSelection.toStdString());
@@ -88,17 +88,17 @@ FrogPilotVehiclesPanel::FrogPilotVehiclesPanel(SettingsWindow *parent) : FrogPil
   addItem(selectModelButton);
   selectModelButton->setVisible(false);
 
-  ParamControl *forceFingerprint = new ParamControl("ForceFingerprint", tr("Disable Automatic Fingerprint Detection"), tr("Forces the selected fingerprint and prevents it from ever changing."), "", this);
+  ParamControl *forceFingerprint = new ParamControl("ForceFingerprint", tr("자동 지문 감지 비활성화"), tr("선택한 지문을 강제로 변경하고 영구적으로 변경되지 않도록 방지합니다."), "", this);
   addItem(forceFingerprint);
 
   bool disableOpenpilotLongState = params.getBool("DisableOpenpilotLongitudinal");
-  disableOpenpilotLong = new ToggleControl(tr("Disable openpilot Longitudinal Control"), tr("Disable openpilot longitudinal control and use stock ACC instead."), "", disableOpenpilotLongState);
+  disableOpenpilotLong = new ToggleControl(tr("Openpilot 종방향 제어 비활성화"), tr("오픈 파일럿 종방향 제어를 비활성화하고 대신 스톡 ACC를 사용하세요."), "", disableOpenpilotLongState);
   QObject::connect(disableOpenpilotLong, &ToggleControl::toggleFlipped, [=](bool state) {
     if (state) {
-      if (FrogPilotConfirmationDialog::yesorno(tr("Are you sure you want to completely disable openpilot longitudinal control?"), this)) {
+      if (FrogPilotConfirmationDialog::yesorno(tr("Openpilot 종방향 제어를 완전히 비활성화하시겠습니까?"), this)) {
         params.putBoolNonBlocking("DisableOpenpilotLongitudinal", state);
         if (started) {
-          if (FrogPilotConfirmationDialog::toggle(tr("Reboot required to take effect."), tr("Reboot Now"), this)) {
+          if (FrogPilotConfirmationDialog::toggle(tr("적용하려면 재부팅이 필요합니다."), tr("Reboot Now"), this)) {
             Hardware::reboot();
           }
         }
@@ -111,15 +111,15 @@ FrogPilotVehiclesPanel::FrogPilotVehiclesPanel(SettingsWindow *parent) : FrogPil
   addItem(disableOpenpilotLong);
 
   std::vector<std::tuple<QString, QString, QString, QString>> vehicleToggles {
-    {"LongPitch", tr("Long Pitch Compensation"), tr("Smoothen out the gas and pedal controls."), ""},
-    {"GasRegenCmd", tr("Truck Tune"), tr("Increase the acceleration and smoothen out the brake control when coming to a stop. For use on Silverado/Sierra only."), ""},
+    {"LongPitch", tr("롱 피치 보상"), tr("가스 및 페달 컨트롤을 부드럽게 만드세요."), ""},
+    {"GasRegenCmd", tr("트럭 튜닝"), tr("정지할 때 가속도를 높이고 브레이크 제어를 부드럽게 합니다. Silverado/Sierra에서만 사용 가능."), ""},
 
     {"CrosstrekTorque", tr("Subaru Crosstrek Torque Increase"), tr("Increases the maximum allowed torque for the Subaru Crosstrek."), ""},
 
-    {"ToyotaDoors", tr("Automatically Lock/Unlock Doors"), tr("Automatically lock the doors when in drive and unlock when in park."), ""},
-    {"ClusterOffset", tr("Cluster Offset"), tr("Set the cluster offset openpilot uses to try and match the speed displayed on the dash."), ""},
-    {"SNGHack", tr("Stop and Go Hack"), tr("Enable the 'Stop and Go' hack for vehicles without stock stop and go functionality."), ""},
-    {"ToyotaTune", tr("Toyota Tune"), tr("Use a custom Toyota longitudinal tune.\n\nCydia = More focused on TSS-P vehicles but works for all Toyotas\n\nDragonPilot = Focused on TSS2 vehicles\n\nFrogPilot = Takes the best of both worlds with some personal tweaks focused around FrogsGoMoo's 2019 Lexus ES 350"), ""},
+    {"ToyotaDoors", tr("자동으로 문 잠금/잠금 해제"), tr("주행 중일 때는 자동으로 문을 잠그고 주차 중일 때는 문을 잠금 해제합니다."), ""},
+    {"ClusterOffset", tr("클러스터 오프셋"), tr("대시보드에 표시된 속도와 일치하도록 Openpilot에서 사용하는 클러스터 오프셋을 설정합니다."), ""},
+    {"SNGHack", tr("정지 및 출발 해킹"), tr("정지 및 이동 기능이 없는 차량에 대해 '정지 및 이동' 해킹을 활성화합니다."), ""},
+    {"ToyotaTune", tr("Toyota Tune"), tr("사용자 지정 Toyota 종방향 튜닝을 사용합니다.\n\nCydia = TSS-P 차량에 더 중점을 두었지만 모든 Toyota에서 작동합니다.\n\nDragonPilot = TSS2 차량에 중점을 둡니다.\n\nFrogPilot = 두 가지의 장점을 모두 취하고 개인적인 조정을 중심으로 합니다. FrogsGoMoo의 2019 Lexus ES 350"), ""},
   };
 
   for (const auto &[param, title, desc, icon] : vehicleToggles) {
