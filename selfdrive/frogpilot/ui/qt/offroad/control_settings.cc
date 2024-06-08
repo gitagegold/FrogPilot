@@ -157,7 +157,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
     {"UseVienna", tr("Vienna 속도 제한 표지판 사용"), tr("MUTCD(US) 대신 Vienna(EU) 속도 제한 스타일 표지판 사용."), ""},
 
     {"VisionTurnControl", tr("화면 턴 속도 조절"), tr("도로에서 감지된 곡선에서 속도를 줄입니다."), "../frogpilot/assets/toggle_icons/icon_vtc.png"},
-    {"DisableVTSCSmoothing", tr("화면 턴 속도 조절 UI Smoothing 비활성화""), tr("onroad UI에서 요청된 속도에 대한 Smoothing을 비활성화합니다."), ""},
+    {"DisableVTSCSmoothing", tr("화면 턴 속도 조절 UI Smoothing 비활성화"), tr("onroad UI에서 요청된 속도에 대한 Smoothing을 비활성화합니다."), ""},
     {"CurveSensitivity", tr("곡선 감지 감도"), tr("곡선 감지 감도를 설정합니다. 값이 높을수록 반응이 빠르고, 값이 낮을수록 반응은 부드럽지만 반응은 느립니다."), ""},
     {"TurnAggressiveness", tr("회전 속도 공격성"), tr("회전 속도 공격성을 설정합니다. 값이 높을수록 회전 속도가 빨라지고, 값이 낮을수록 회전이 부드럽습니다."), ""},
   };
