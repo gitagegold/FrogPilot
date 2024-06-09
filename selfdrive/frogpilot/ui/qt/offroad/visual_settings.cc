@@ -14,7 +14,7 @@ FrogPilotVisualsPanel::FrogPilotVisualsPanel(SettingsWindow *parent) : FrogPilot
     {"WarningSoftVolume", "경고 소프트 볼륨", "관련 경고:\n\n브레이크!, 충돌 위험\n즉시 제어하십시오", ""},
     {"WarningImmediateVolume", "즉시 볼륨 경고", "관련 경고:\n\n즉시 해제, 운전자 주의가 산만해짐\n즉시 해제, 운전자 응답 없음", ""},
 
-    {"CustomAlerts", tr("Custom Alerts"), tr("Enable custom alerts for openpilot events."), "../frogpilot/assets/toggle_icons/icon_green_light.png"},
+    {"CustomAlerts", tr("사용자 정의 알림"), tr("openpilot 이벤트에 대한 사용자 정의 알림을 활성화합니다."), "../frogpilot/assets/toggle_icons/icon_green_light.png"},
     {"GreenLightAlert", tr("출발 신호등 알림"), tr("신호등이 빨간불에서 초록불로 바뀌면 알림을 받으세요."), ""},
     {"LeadDepartingAlert", tr("선행차량 출발 알림"), tr("정지한 상태에서 선행 차량이 출발을 시작하면 알림을 받습니다."), ""},
     {"LoudBlindspotAlert", tr("큰 소리로 사각지대 경고"), tr("차선을 변경하려고 할 때 사각지대에 차량이 감지되면 더 큰 소리로 경고합니다."), ""},
