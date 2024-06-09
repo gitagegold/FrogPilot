@@ -450,7 +450,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
 
       QDir modelDir("/data/models/");
 
-      deleteModelBtn = new ButtonControl(tr("Delete Model"), tr("DELETE"), "");
+      deleteModelBtn = new ButtonControl(tr("모델 삭제"), tr("삭제"), "");
       QObject::connect(deleteModelBtn, &ButtonControl::clicked, [=]() {
         std::string currentModel = params.get("Model") + ".thneed";
 
@@ -469,10 +469,10 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
           }
         }
 
-        QString selectedModel = MultiOptionDialog::getSelection(tr("Select a model to delete"), deletableModelLabels, "", this);
-        if (!selectedModel.isEmpty() && ConfirmationDialog::confirm(tr("Are you sure you want to delete this model?"), tr("Delete"), this)) {
+        QString selectedModel = MultiOptionDialog::getSelection(tr("삭제할 모델을 선택"), deletableModelLabels, "", this);
+        if (!selectedModel.isEmpty() && ConfirmationDialog::confirm(tr("이 모델을 삭제 하시겠습니까?"), tr("삭제"), this)) {
           std::thread([=]() {
-            deleteModelBtn->setValue(tr("Deleting..."));
+            deleteModelBtn->setValue(tr("삭제중..."));
 
             deleteModelBtn->setEnabled(false);
             downloadModelBtn->setEnabled(false);
@@ -486,7 +486,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
             downloadModelBtn->setEnabled(true);
             selectModelBtn->setEnabled(true);
 
-            deleteModelBtn->setValue(tr("Deleted!"));
+            deleteModelBtn->setValue(tr("삭제!"));
             std::this_thread::sleep_for(std::chrono::seconds(3));
             deleteModelBtn->setValue("");
           }).detach();
@@ -494,7 +494,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
       });
       addItem(deleteModelBtn);
 
-      downloadModelBtn = new ButtonControl(tr("Download Model"), tr("DOWNLOAD"), "");
+      downloadModelBtn = new ButtonControl(tr("모델 다운로드"), tr("다운로드"), "");
       QObject::connect(downloadModelBtn, &ButtonControl::clicked, [=]() {
         QStringList availableModels = QString::fromStdString(params.get("AvailableModels")).split(",");
         QStringList modelLabels = QString::fromStdString(params.get("AvailableModelsNames")).split(",");
@@ -513,7 +513,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
           }
         }
 
-        QString modelToDownload = MultiOptionDialog::getSelection(tr("Select a driving model to download"), downloadableModelLabels, "", this);
+        QString modelToDownload = MultiOptionDialog::getSelection(tr("다운로드할 모델을 선택하세요"), downloadableModelLabels, "", this);
         if (!modelToDownload.isEmpty()) {
           QString selectedModelValue = labelToModelMap.value(modelToDownload);
           paramsMemory.put("ModelToDownload", selectedModelValue.toStdString());
@@ -533,7 +533,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
             downloadModelBtn->setEnabled(true);
             selectModelBtn->setEnabled(true);
 
-            downloadModelBtn->setValue(tr("Download failed..."));
+            downloadModelBtn->setValue(tr("다운로드 실패..."));
             paramsMemory.remove("ModelDownloadProgress");
             paramsMemory.remove("ModelToDownload");
 
@@ -563,7 +563,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
                 downloadModelBtn->setEnabled(true);
                 selectModelBtn->setEnabled(true);
 
-                downloadModelBtn->setValue(tr("Downloaded!"));
+                downloadModelBtn->setValue(tr("다운로드!"));
                 paramsMemory.remove("ModelDownloadProgress");
                 paramsMemory.remove("ModelToDownload");
 
@@ -583,7 +583,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
       });
       addItem(downloadModelBtn);
 
-      selectModelBtn = new ButtonControl(tr("Select Model"), tr("SELECT"), "");
+      selectModelBtn = new ButtonControl(tr("모델 선택"), tr("선택"), "");
       QObject::connect(selectModelBtn, &ButtonControl::clicked, [=]() {
         QStringList availableModels = QString::fromStdString(params.get("AvailableModels")).split(",");
         QStringList modelLabels = QString::fromStdString(params.get("AvailableModelsNames")).split(",");
@@ -612,13 +612,13 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
             params.putNonBlocking("ModelName", modelToSelect.toStdString());
           }
 
-          if (FrogPilotConfirmationDialog::yesorno(tr("Do you want to start with a fresh calibration for the newly selected model?"), this)) {
+          if (FrogPilotConfirmationDialog::yesorno(tr("새로 선택한 모델에 대한 새로운 캘리브레이션을 시작하시겠습니까?"), this)) {
             params.remove("CalibrationParams");
             params.remove("LiveTorqueParameters");
           }
 
           if (started) {
-            if (FrogPilotConfirmationDialog::toggle(tr("Reboot required to take effect."), tr("Reboot Now"), this)) {
+            if (FrogPilotConfirmationDialog::toggle(tr("적용하려면 재부팅이 필요합니다."), tr("지금 재시작"), this)) {
               Hardware::reboot();
             }
           }
