@@ -853,32 +853,32 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
   QObject::connect(static_cast<ToggleControl*>(toggles["IncreaseThermalLimits"]), &ToggleControl::toggleFlipped, [this]() {
     if (params.getBool("IncreaseThermalLimits")) {
       FrogPilotConfirmationDialog::toggleAlert(
-        tr("WARNING: This can cause premature wear or damage by running the device over comma's recommended temperature limits!"),
-        tr("I understand the risks."), this);
+        tr("경고: 쉼표의 권장 온도 한계를 초과하여 장치를 작동시키면 조기 마모나 손상이 발생할 수 있습니다!"),
+        tr("저는 위험을 이해합니다."), this);
     }
   });
 
   QObject::connect(static_cast<ToggleControl*>(toggles["NoLogging"]), &ToggleControl::toggleFlipped, [this]() {
     if (params.getBool("NoLogging")) {
       FrogPilotConfirmationDialog::toggleAlert(
-        tr("WARNING: This will prevent your drives from being recorded and the data will be unobtainable!"),
-        tr("I understand the risks."), this);
+        tr("경고: 이렇게 하면 운전이 기록되지 않고 데이터를 얻을 수 없습니다!"),
+        tr("저는 위험을 이해합니다."), this);
     }
   });
 
   QObject::connect(static_cast<ToggleControl*>(toggles["NoUploads"]), &ToggleControl::toggleFlipped, [this]() {
     if (params.getBool("NoUploads")) {
       FrogPilotConfirmationDialog::toggleAlert(
-        tr("WARNING: This will prevent your drives from appearing on comma connect which may impact debugging and support!"),
-        tr("I understand the risks."), this);
+        tr("경고: 이렇게 하면 드라이브가 comma connect에 나타나지 않아 디버깅과 지원에 영향을 미칠 수 있습니다!"),
+        tr("저는 위험을 이해합니다."), this);
     }
   });
 
   QObject::connect(static_cast<ToggleControl*>(toggles["TrafficMode"]), &ToggleControl::toggleFlipped, [this]() {
     if (params.getBool("TrafficMode")) {
       FrogPilotConfirmationDialog::toggleAlert(
-        tr("To activate 'Traffic Mode' you hold down the 'distance' button on your steering wheel for 2.5 seconds."),
-        tr("Sounds good!"), this);
+        tr("교통 모드'를 활성화하려면 스티어링 휠의 '거리' 버튼을 2.5초 동안 누르세요."),
+        tr("좋은 것 같아요!"), this);
     }
   });
 
@@ -916,7 +916,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
   FrogPilotButtonsControl *aggressiveResetButton = static_cast<FrogPilotButtonsControl*>(toggles["ResetAggressivePersonality"]);
 
   QObject::connect(aggressiveResetButton, &FrogPilotButtonsControl::buttonClicked, this, [=]() {
-    if (FrogPilotConfirmationDialog::yesorno(tr("Are you sure you want to completely reset your settings for the 'Aggressive' personality?"), this)) {
+    if (FrogPilotConfirmationDialog::yesorno(tr("공격적 성격에 대한 설정을 완전히 재설정하시겠습니까?"), this)) {
       params.putFloat("AggressiveFollow", 1.25);
       params.putFloat("AggressiveJerkAcceleration", 50);
       params.putFloat("AggressiveJerkSpeed", 50);
@@ -933,7 +933,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
   FrogPilotButtonsControl *standardResetButton = static_cast<FrogPilotButtonsControl*>(toggles["ResetStandardPersonality"]);
 
   QObject::connect(standardResetButton, &FrogPilotButtonsControl::buttonClicked, this, [=]() {
-    if (FrogPilotConfirmationDialog::yesorno(tr("Are you sure you want to completely reset your settings for the 'Standard' personality?"), this)) {
+    if (FrogPilotConfirmationDialog::yesorno(tr("표준 성격에 대한 설정을 완전히 재설정하시겠습니까?"), this)) {
       params.putFloat("StandardFollow", 1.45);
       params.putFloat("StandardJerkAcceleration", 100);
       params.putFloat("StandardJerkSpeed", 100);
@@ -950,7 +950,7 @@ FrogPilotControlsPanel::FrogPilotControlsPanel(SettingsWindow *parent) : FrogPil
   FrogPilotButtonsControl *relaxedResetButton = static_cast<FrogPilotButtonsControl*>(toggles["ResetRelaxedPersonality"]);
 
   QObject::connect(relaxedResetButton, &FrogPilotButtonsControl::buttonClicked, this, [=]() {
-    if (FrogPilotConfirmationDialog::yesorno(tr("Are you sure you want to completely reset your settings for the 'Relaxed' personality?"), this)) {
+    if (FrogPilotConfirmationDialog::yesorno(tr("편안한 성격에 대한 설정을 완전히 재설정하시겠습니까?"), this)) {
       params.putFloat("RelaxedFollow", 1.75);
       params.putFloat("RelaxedJerkAcceleration", 100);
       params.putFloat("RelaxedJerkSpeed", 100);
